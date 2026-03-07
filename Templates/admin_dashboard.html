@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Header -->
+<div class="flex items-center justify-between fade-up">
+  <div>
+    <span class="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">Admin Panel</span>
+    <h1 class="mt-1 text-2xl font-semibold text-[#0F3D57]">Dashboard</h1>
+  </div>
+  <a href="/"
+     class="rounded-md border border-[rgba(15,61,87,0.2)] px-4 py-2 text-xs font-semibold text-[#0F3D57] hover:bg-[#EAF6FF] transition">
+    ← Back to Site
+  </a>
+</div>
+
+<!-- Stats -->
+<section class="grid grid-cols-2 gap-4 lg:grid-cols-4 fade-up fade-up-1">
+  {% for label, val, sub in [
+    ("Total Postcodes",  stats.total_postcodes, "In demo dataset"),
+    ("Reports Generated",stats.total_reports,   "PDF downloads"),
+    ("Average Score",    stats.avg_score,        "/ 1000 civic score"),
+    ("High Impact Areas",stats.high_impact,      "Areas scoring 750+")
+  ] %}
+  <div class="card p-5 text-center">
+    <p class="font-mono text-xs font-semibold uppercase text-slate-400">{{ label }}</p>
+    <p class="mt-2 text-3xl font-semibold text-[#0F3D57]">{{ val }}</p>
+    <p class="text-xs text-slate-400">{{ sub }}</p>
+  </div>
+  {% endfor %}
+</section>
+
+<!-- Postcode Table -->
+<section class="card p-6 fade-up fade-up-2">
+  <div class="flex items-center justify-between mb-5">
+    <h2 class="text-lg font-semibold text-[#0F3D57]">Postcode Registry</h2>
+    <span class="rounded-full bg-[#EAF6FF] px-3 py-1 text-xs font-semibold text-[#0F3D57]">
+      {{ postcodes | length }} entries
+    </span>
+  </div>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b border-[rgba(15,61,87,0.1)]">
+          {% for h in ["Postcode", "Area", "Civic Score", "Impact", "Direction", "Confidence", "Actions"] %}
+          <th class="pb-3 text-left font-mono text-xs font-semibold uppercase text-slate-400">{{ h }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-[rgba(15,61,87,0.06)]">
+        {% for code, d in postcodes.items() %}
+        <tr class="hover:bg-[#F4FAFF] transition">
+          <td class="py-3 font-mono text-xs font-semibold text-[#0F3D57]">{{ code }}</td>
+          <td class="py-3 text-xs text-slate-600">{{ d.area }}</td>
+          <td class="py-3">
+            <div class="flex items-center gap-2">
+              <span class="font-semibold text-[#0F3D57]">{{ d.civicScore }}</span>
+              <div class="h-1.5 w-16 rounded-full bg-[#EAF6FF]">
+                <div class="h-1.5 rounded-full bg-[#0F3D57]"
+                     style="width:{{ (d.civicScore / 1000 * 100) | round | int }}%"></div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3">
+            <span class="rounded-full px-2 py-0.5 text-[10px] font-semibold
+              {{ 'bg-blue-100 text-blue-700' if d.impactLevel == 'high'
+                 else 'bg-yellow-100 text-yellow-700' if d.impactLevel == 'moderate'
+                 else 'bg-slate-100 text-slate-600' }}">
+              {{ d.impactLabel }}
+            </span>
+          </td>
+          <td class="py-3 text-xs text-slate-500">{{ d.directionSymbol }} {{ d.direction }}</td>
+          <td class="py-3 text-xs text-slate-500">± {{ d.confidenceBand }}</td>
+          <td class="py-3">
+            <a href="/postcode?code={{ code | urlencode }}"
+               class="text-xs font-semibold text-[#0F3D57] hover:underline">View →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Score Distribution -->
+<section class="card p-6 fade-up fade-up-3">
+  <h2 class="mb-5 text-lg font-semibold text-[#0F3D57]">Score Distribution</h2>
+  <div class="space-y-4">
+    {% for code, d in postcodes.items() %}
+    <div>
+      <div class="flex justify-between text-xs mb-1">
+        <span class="font-mono font-semibold text-[#0F3D57]">{{ code }} — {{ d.area }}</span>
+        <span class="font-semibold text-[#0F3D57]">{{ d.civicScore }} / 1000</span>
+      </div>
+      <div class="h-3 w-full rounded-full bg-[#EAF6FF]">
+        <div class="bar-fill h-3 rounded-full bg-[#0F3D57]"
+             style="width:{{ (d.civicScore / 1000 * 100) | round | int }}%"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Quick Actions -->
+<section class="card p-6 fade-up fade-up-4">
+  <h2 class="mb-4 text-lg font-semibold text-[#0F3D57]">Quick Actions</h2>
+  <div class="grid gap-3 sm:grid-cols-3">
+    <a href="/compare?codes=LS1+1BA,LS3+1AA,LS6+3BN"
+       class="rounded-xl border border-[rgba(15,61,87,0.15)] bg-[#F4FAFF] p-4 hover:bg-[#EAF6FF] transition">
+      <p class="text-xs font-semibold text-[#0F3D57]">Compare All Postcodes</p>
+      <p class="mt-1 text-xs text-slate-400">Side-by-side comparison</p>
+    </a>
+    <a href="/documentation"
+       class="rounded-xl border border-[rgba(15,61,87,0.15)] bg-[#F4FAFF] p-4 hover:bg-[#EAF6FF] transition">
+      <p class="text-xs font-semibold text-[#0F3D57]">View Documentation</p>
+      <p class="mt-1 text-xs text-slate-400">Score methodology & guides</p>
+    </a>
+    <a href="/api/postcodes" target="_blank"
+       class="rounded-xl border border-[rgba(15,61,87,0.15)] bg-[#F4FAFF] p-4 hover:bg-[#EAF6FF] transition">
+      <p class="text-xs font-semibold text-[#0F3D57]">API Endpoint</p>
+      <p class="mt-1 text-xs text-slate-400">View raw JSON data</p>
+    </a>
+  </div>
+</section>
+
+{% endblock %}

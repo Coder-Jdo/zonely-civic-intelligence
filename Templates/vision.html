@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Platform Vision{% endblock %}
+
+{% block content %}
+
+<!-- Back -->
+<a href="/" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#0F3D57] transition fade-up">
+  ← Back to Home
+</a>
+
+<!-- ── Hero ──────────────────────────────────────────────────────────── -->
+<section class="text-center py-10 fade-up fade-up-1">
+  <h1 class="font-display text-5xl font-bold text-[#0F3D57] md:text-6xl">Platform Vision</h1>
+  <p class="mt-4 text-base text-slate-500">From raw planning data to institutional intelligence in real-time</p>
+</section>
+
+<!-- ── 4 Steps ────────────────────────────────────────────────────────── -->
+<section class="rounded-2xl bg-[#F0F4F8] p-6 fade-up fade-up-2">
+  <div class="grid gap-4" style="grid-template-columns: repeat(4, 1fr);">
+    <!-- Step 1 -->
+    <div class="card p-6 space-y-4">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100">
+        <svg class="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M4 7a1 1 0 011-1h4a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h4a1 1 0 011 1v13a1 1 0 01-1 1h-4a1 1 0 01-1-1V4z"/>
+        </svg>
+      </div>
+      <span class="inline-block rounded-md bg-blue-500 px-3 py-1 text-xs font-bold text-white">Step 1</span>
+      <h3 class="text-base font-bold text-[#0F3D57]">Civic Planning Data</h3>
+      <p class="text-sm text-slate-500">10,000+ standardized planning records across Manchester</p>
+    </div>
+
+    <!-- Divider -->
+    <!-- <div class="hidden lg:flex items-center justify-start pl-0 -ml-8 mt-16">
+      <span class="text-slate-300 text-2xl">—</span>
+    </div> -->
+
+    <!-- Step 2 -->
+    <div class="card p-6 space-y-4">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-100">
+        <svg class="h-6 w-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+      </div>
+      <span class="inline-block rounded-md bg-purple-500 px-3 py-1 text-xs font-bold text-white">Step 2</span>
+      <h3 class="text-base font-bold text-[#0F3D57]">Standardisation Engine</h3>
+      <p class="text-sm text-slate-500">5+ attributes processed and normalized per application</p>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="card p-6 space-y-4">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100">
+        <svg class="h-6 w-6 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+        </svg>
+      </div>
+      <span class="inline-block rounded-md bg-yellow-500 px-3 py-1 text-xs font-bold text-white">Step 3</span>
+      <h3 class="text-base font-bold text-[#0F3D57]">Property Intelligence Layer</h3>
+      <p class="text-sm text-slate-500">Contextual metrics: impact scores, risk assessment, velocity</p>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="card p-6 space-y-4">
+      <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100">
+        <svg class="h-6 w-6 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+        </svg>
+      </div>
+      <span class="inline-block rounded-md bg-emerald-500 px-3 py-1 text-xs font-bold text-white">Step 4</span>
+      <h3 class="text-base font-bold text-[#0F3D57]">Institutional & Agency Use</h3>
+      <p class="text-sm text-slate-500">Decision-making tools for property professionals</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── 3 Value Props ──────────────────────────────────────────────────── -->
+<section class="grid grid-cols-3 gap-0 text-center fade-up fade-up-3 py-6">
+  <div class="space-y-2 px-8">
+    <h2 class="text-4xl font-bold text-blue-600">Real-Time</h2>
+    <p class="text-sm text-slate-500">Weekly data updates keep intelligence current</p>
+  </div>
+  <div class="space-y-2 px-8 border-x border-[rgba(15,61,87,0.1)]">
+    <h2 class="text-4xl font-bold text-orange-500">Standardized</h2>
+    <p class="text-sm text-slate-500">Consistent metrics across all postcodes</p>
+  </div>
+  <div class="space-y-2 px-8">
+    <h2 class="text-4xl font-bold text-emerald-600">Actionable</h2>
+    <p class="text-sm text-slate-500">Decision-ready intelligence for professionals</p>
+  </div>
+</section>
+
+<!-- ── CTA Button ─────────────────────────────────────────────────────── -->
+<section class="text-center fade-up fade-up-4 pb-4">
+  <a href="/"
+     class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-8 py-3.5 text-sm font-semibold text-white
+            hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+    Explore Intelligence →
+  </a>
+</section>
+
+<!-- ── Footer note ────────────────────────────────────────────────────── -->
+<section class="text-center fade-up fade-up-5 py-4 border-t border-[rgba(15,61,87,0.08)]">
+  <p class="text-sm text-slate-400">
+    CPR provides institutional-grade planning intelligence for property professionals and estate agencies across Manchester
+  </p>
+</section>
+
+{% endblock %}

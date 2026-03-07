@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+
+<div class="flex min-h-[70vh] items-center justify-center fade-up">
+  <div class="card w-full max-w-sm p-8 space-y-6">
+
+    <!-- Logo -->
+    <div class="text-center space-y-2">
+      <span class="text-3xl text-[#0F3D57]">▲</span>
+      <h1 class="text-xl font-semibold text-[#0F3D57]">Admin Login</h1>
+      <p class="text-xs text-slate-400">Zonely Civic Intelligence — Restricted Area</p>
+    </div>
+
+    <!-- Error -->
+    {% if error %}
+    <div class="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600 text-center">
+      {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- Form -->
+    <div class="space-y-4">
+      <div>
+        <label class="block font-mono text-xs font-semibold uppercase text-slate-400 mb-1.5">Username</label>
+        <input type="text" name="username" id="username"
+               placeholder="Enter username"
+               class="w-full rounded-md border border-[rgba(15,61,87,0.25)] bg-white px-4 py-2.5 text-sm text-[#0F3D57]
+                      placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0F3D57] transition"/>
+      </div>
+      <div>
+        <label class="block font-mono text-xs font-semibold uppercase text-slate-400 mb-1.5">Password</label>
+        <input type="password" name="password" id="password"
+               placeholder="Enter password"
+               class="w-full rounded-md border border-[rgba(15,61,87,0.25)] bg-white px-4 py-2.5 text-sm text-[#0F3D57]
+                      placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#0F3D57] transition"/>
+      </div>
+      <button onclick="doLogin()"
+        class="w-full rounded-md bg-[#0F3D57] py-2.5 text-sm font-semibold text-white hover:bg-[#1e5f82] transition">
+        Sign In
+      </button>
+    </div>
+
+    <p class="text-center text-xs text-slate-400">
+      Demo credentials: <span class="font-mono text-[#0F3D57]">admin / zonely2024</span>
+    </p>
+  </div>
+</div>
+
+<script>
+function doLogin() {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = '/admin';
+
+  const u = document.createElement('input');
+  u.name = 'username';
+  u.value = document.getElementById('username').value;
+
+  const p = document.createElement('input');
+  p.name = 'password';
+  p.value = document.getElementById('password').value;
+
+  form.appendChild(u);
+  form.appendChild(p);
+  document.body.appendChild(form);
+  form.submit();
+}
+</script>
+
+{% endblock %}

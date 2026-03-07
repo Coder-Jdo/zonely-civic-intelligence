@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Not Found{% endblock %}
+
+{% block content %}
+<div class="card p-12 text-center max-w-lg mx-auto">
+  <span class="text-4xl text-[#0F3D57]">▲</span>
+  <h1 class="mt-4 font-display text-2xl text-[#0F3D57]">Postcode Not Found</h1>
+  <p class="mt-2 text-sm text-slate-500">
+    <strong>{{ code }}</strong> is not in the demo dataset. Try one of the demo postcodes below.
+  </p>
+  <div class="mt-6 flex flex-wrap justify-center gap-2">
+    {% for pc in ["LS1 1BA", "LS3 1AA", "LS6 3BN"] %}
+    <a href="/postcode?code={{ pc | urlencode }}"
+       class="rounded-md border border-[rgba(15,61,87,0.2)] px-4 py-2 text-xs font-semibold text-[#0F3D57] hover:bg-[#EAF6FF] transition">
+      {{ pc }}
+    </a>
+    {% endfor %}
+  </div>
+  <a href="/" class="mt-6 inline-block text-xs text-slate-400 hover:text-[#0F3D57] transition">← Back to Home</a>
+</div>
+{% endblock %}
