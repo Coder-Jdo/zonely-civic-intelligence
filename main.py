@@ -9,7 +9,9 @@ import io
 from fastapi.staticfiles import StaticFiles
 app = FastAPI(title="Zonely Civic Intelligence")
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+import os
+template_dir = "Templates" if os.path.exists("Templates") else "templates"
+templates = Jinja2Templates(directory=template_dir)
 
 # ── Routes ────────────────────────────────────────────────────────────────────
 
