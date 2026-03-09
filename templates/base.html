@@ -7,95 +7,176 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --brand: #0F3D57;
-      --brand-light: #EAF6FF;
-      --brand-mid: #1e5f82;
-      --text-secondary: #64748b;
-      --stripe: repeating-linear-gradient(135deg, rgba(15,61,87,0.07) 0 2px, transparent 2px 12px);
+    * { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Manrope', sans-serif; }
+
+    body {
+      background: linear-gradient(135deg, #dbeeff 0%, #eef4ff 40%, #f0e9ff 100%);
+      min-height: 100vh;
     }
-    * { font-family: 'DM Sans', sans-serif; }
-    .font-display { font-family: 'DM Serif Display', serif; }
-    .font-mono { font-family: 'DM Mono', monospace; }
-    .stripe-bg { background-image: var(--stripe); }
 
-    /* Score ring animation */
-    @keyframes dash { to { stroke-dashoffset: 0; } }
-    .score-ring { animation: dash 1.2s ease-out forwards; }
+    /* Glass card */
+    .card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 1.25rem;
+      box-shadow: 0 4px 24px rgba(99,130,255,0.08);
+    }
 
-    /* Fade-up on load */
+    .card-solid {
+      background: white;
+      border: 1px solid rgba(200,215,255,0.5);
+      border-radius: 1.25rem;
+      box-shadow: 0 2px 16px rgba(99,130,255,0.07);
+    }
+
+    /* Score circle colors */
+    .score-high   { color: #22c55e; }
+    .score-mid    { color: #f59e0b; }
+    .score-low    { color: #ef4444; }
+
+    /* Animations */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-up { animation: fadeUp 0.5s ease-out both; }
+    .fade-up   { animation: fadeUp 0.5s ease-out both; }
     .fade-up-1 { animation-delay: 0.05s; }
-    .fade-up-2 { animation-delay: 0.15s; }
-    .fade-up-3 { animation-delay: 0.25s; }
-    .fade-up-4 { animation-delay: 0.35s; }
-    .fade-up-5 { animation-delay: 0.45s; }
+    .fade-up-2 { animation-delay: 0.12s; }
+    .fade-up-3 { animation-delay: 0.20s; }
+    .fade-up-4 { animation-delay: 0.28s; }
+    .fade-up-5 { animation-delay: 0.36s; }
 
-    /* Bar fill animation */
     @keyframes barFill { from { width: 0; } }
     .bar-fill { animation: barFill 0.9s cubic-bezier(.16,1,.3,1) both; }
 
-    .card {
-      border-radius: 1rem;
-      border: 1px solid rgba(15,61,87,0.12);
-      background: white;
-      box-shadow: 0 8px 24px rgba(15,61,87,0.07);
+    /* Pro badge */
+    .pro-badge {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 999px;
     }
 
-    /* Tag colours */
-    .tag-planning       { background:#dbeafe; color:#1d4ed8; }
-    .tag-infrastructure { background:#d1fae5; color:#065f46; }
-    .tag-crisis         { background:#fee2e2; color:#991b1b; }
-    .tag-market         { background:#fef3c7; color:#92400e; }
+    /* Nav blur */
+    .nav-blur {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(200,215,255,0.4);
+    }
+
+    /* Pill tag */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(200,215,255,0.6);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #475569;
+    }
+
+    /* Stat card hover */
+    .stat-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(99,130,255,0.13);
+    }
+
+    /* Input */
+    .search-input {
+      background: rgba(255,255,255,0.9);
+      border: 1.5px solid rgba(200,215,255,0.7);
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 15px;
+      color: #1e293b;
+      outline: none;
+      transition: border 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .search-input:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+    }
+
+    .search-btn {
+      background: linear-gradient(135deg, #4f8ef7, #6366f1);
+      color: white;
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .search-btn:hover { opacity: 0.92; transform: scale(1.02); }
   </style>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: '#0F3D57',
-            'brand-light': '#EAF6FF',
+            brand: '#4f8ef7',
+            'brand-dark': '#1e3a5f',
+            'brand-purple': '#6366f1',
           }
         }
       }
     }
   </script>
 </head>
-<body class="min-h-screen bg-[#F7FBFF]">
+<body>
 
   <!-- Nav -->
-  <nav class="sticky top-0 z-50 border-b border-[rgba(15,61,87,0.1)] bg-white/80 backdrop-blur-md">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+  <nav class="sticky top-0 z-50 nav-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
       <a href="/" class="flex items-center gap-2">
-        <img src="/static/logo.png" alt="Zonely" class="h-12 w-auto" />
-        <!-- <span class="hidden text-xs text-slate-400 sm:inline">/ Civic Intelligence</span> -->
+        <img src="/static/logo.png" alt="Zonely" class="h-10 w-auto" />
       </a>
       <div class="flex items-center gap-6">
-        <a href="/" class="text-xs font-medium text-slate-500 hover:text-[#0F3D57] transition">Home</a>
-        <a href="/compare" class="text-xs font-medium text-slate-500 hover:text-[#0F3D57] transition">Compare</a>
-        <a href="/documentation" class="text-xs font-medium text-slate-500 hover:text-[#0F3D57] transition">Documentation</a>
-        <a href="/vision" class="text-xs font-medium text-slate-500 hover:text-[#0F3D57] transition">Vision</a>
-        <a href="/contact" class="text-xs font-medium text-slate-500 hover:text-[#0F3D57] transition">Contact</a>
-        <a href="/admin" class="rounded-md border border-[rgba(15,61,87,0.2)] px-3 py-1.5 text-xs font-semibold text-[#0F3D57] hover:bg-[#EAF6FF] transition">Admin</a>
+        <a href="/"             class="text-xs font-medium text-slate-500 hover:text-brand transition">Home</a>
+        <a href="/compare"      class="text-xs font-medium text-slate-500 hover:text-brand transition">Compare</a>
+        <a href="/vision"       class="text-xs font-medium text-slate-500 hover:text-brand transition">Vision</a>
+        <a href="/documentation"class="text-xs font-medium text-slate-500 hover:text-brand transition">Documentation</a>
+        <a href="/contact"      class="text-xs font-medium text-slate-500 hover:text-brand transition">Contact</a>
+        <a href="/admin"        class="rounded-full border border-[rgba(99,102,241,0.3)] px-4 py-1.5 text-xs font-semibold text-brand-purple hover:bg-indigo-50 transition">
+          Admin
+        </a>
       </div>
     </div>
   </nav>
 
   <!-- Main -->
-  <main class="mx-auto max-w-6xl px-6 py-10 space-y-12">
+  <main class="mx-auto max-w-6xl px-6 py-10 space-y-8">
     {% block content %}{% endblock %}
   </main>
 
   <!-- Footer -->
-  <footer class="mt-16 border-t border-[rgba(15,61,87,0.08)] bg-white py-8">
-    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-2 sm:flex-row sm:justify-between">
-      <p class="text-xs text-slate-400">© 2025 Zonely · Civic Property Services · Leeds pilot</p>
+  <footer class="mt-16 border-t border-white/50 bg-white/30 backdrop-blur py-8">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-2 sm:flex-row sm:justify-between items-center">
+      <div class="flex items-center gap-6">
+        <a href="/" class="text-xs text-slate-400 hover:text-brand transition">Home</a>
+        <a href="/compare" class="text-xs text-slate-400 hover:text-brand transition">Compare</a>
+        <a href="/documentation" class="text-xs text-slate-400 hover:text-brand transition">Documentation</a>
+        <a href="/contact" class="text-xs text-slate-400 hover:text-brand transition">Contact</a>
+        <a href="/admin" class="text-xs text-slate-400 hover:text-brand transition">Admin</a>
+      </div>
       <p class="text-xs text-slate-400">Not financial advice. Use alongside professional review.</p>
     </div>
   </footer>
