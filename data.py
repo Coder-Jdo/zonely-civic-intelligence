@@ -78,7 +78,7 @@ ZONELY_DEMO_DATA: dict[str, PostcodeData] = {
         },
         "breakdown": {
             "Liveability & Amenities":        {"score": 75, "trend": "Stable",        "note": "Strong service density and amenity access."},
-            "Education & Human Capital":      {"score": 55, "trend": "Growing",       "note": "Moderate education strength; improving attractiveness."},
+            "Investment Potential":           {"score": 55, "trend": "Growing",       "note": "Moderate Investment strength; improving attractiveness."},
             "Infrastructure & Connectivity":  {"score": 84, "trend": "Well-connected","note": "Excellent transport links."},
             "Crime & Safety":                 {"score": 68, "trend": "Improving",     "note": "Safety improving with regeneration."},
             "Planning & Development Momentum":{"score": 92, "trend": "Accelerating",  "note": "Very high pipeline activity."},
@@ -144,7 +144,7 @@ ZONELY_DEMO_DATA: dict[str, PostcodeData] = {
         },
         "breakdown": {
             "Liveability & Amenities":        {"score": 60, "trend": "Stable",  "note": "Adequate amenity access."},
-            "Education & Human Capital":      {"score": 62, "trend": "Stable",  "note": "Solid education signal."},
+            "Investment Potential":           {"score": 62, "trend": "Stable",  "note": "Solid Investment signal."},
             "Infrastructure & Connectivity":  {"score": 58, "trend": "Stable",  "note": "Average connectivity."},
             "Crime & Safety":                 {"score": 45, "trend": "Stable",  "note": "Moderate safety profile."},
             "Planning & Development Momentum":{"score": 55, "trend": "Stable",  "note": "Steady pipeline."},
@@ -203,7 +203,7 @@ ZONELY_DEMO_DATA: dict[str, PostcodeData] = {
         },
         "breakdown": {
             "Liveability & Amenities":        {"score": 33, "trend": "Stable",   "note": "Local amenities exist but lower density."},
-            "Education & Human Capital":      {"score": 55, "trend": "Growing",  "note": "Stable education base."},
+            "Investment Potential":           {"score": 55, "trend": "Growing",  "note": "Stable Investment base."},
             "Infrastructure & Connectivity":  {"score": 31, "trend": "Moderate", "note": "Moderate connectivity."},
             "Crime & Safety":                 {"score": 62, "trend": "Improving","note": "Favourable safety trend."},
             "Planning & Development Momentum":{"score": 40, "trend": "Stable",   "note": "Lower development intensity."},

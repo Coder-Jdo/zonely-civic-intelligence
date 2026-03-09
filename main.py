@@ -21,7 +21,7 @@ async def index(request: Request):
     bureau_bars = [
         {"label": "Crime",       "value": 42},
         {"label": "Planning",    "value": 76},
-        {"label": "Infra",       "value": 64},
+        {"label": "scoreInfra",  "value": 64},
         {"label": "Education",   "value": 58},
         {"label": "Liveability", "value": 70},
     ]

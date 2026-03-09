@@ -211,7 +211,7 @@ def generate_report_pdf(code: str, data: dict) -> bytes:
 
     # ── Civic Credit History ───────────────────────────────────────────────────
     ch = data["creditHistory"]
-    story.append(Paragraph("Civic Credit History", styles["section"]))
+    story.append(Paragraph("Planning and Development History", styles["section"]))
     story.append(stat_row([
         ("Volatility Index", str(ch["volatilityIndex"])),
         ("Recovery Speed",   str(ch["recoverySpeed"])),
@@ -244,6 +244,33 @@ def generate_report_pdf(code: str, data: dict) -> bytes:
         ]))
         story.append(t)
         story.append(Spacer(1, 6))
+
+# ── Score Category Descriptions ───────────────────────────────────────────
+    story.append(Paragraph("Score Category Descriptions", styles["section"]))
+    story.append(Spacer(1, 6))
+
+    categories = [
+        ("1. Growth & Investment Potential",
+         "Forecasts future property price growth and rental yield trends by analysing historical price data, housing demand, and economic activity to identify areas likely to appreciate in value."),
+        ("2. Planning & Development Momentum",
+         "Tracks approved developments, regeneration projects, and planning applications to identify neighbourhoods where upcoming construction and investment could drive future demand."),
+        ("3. Infrastructure & Connectivity",
+         "Evaluates transport links, accessibility, and upcoming infrastructure projects that improve connectivity and increase the attractiveness of an area."),
+        ("4. Safety & Community Stability",
+         "Analyses crime rates and safety trends to assess the stability and long-term desirability of a neighbourhood."),
+        ("5. Liveability & Social Infrastructure",
+         "Measures quality of life factors such as schools, healthcare, green spaces, amenities, and walkability that influence where people choose to live."),
+    ]
+
+    for title, desc in categories:
+        story.append(KeepTogether([
+            Paragraph(title, styles["bold"]),
+            Spacer(1, 3),
+            Paragraph(desc, styles["body"]),
+            Spacer(1, 10),
+        ]))
+
+    story.append(Spacer(1, 6))
 
     # ── Footer ─────────────────────────────────────────────────────────────────
     story.append(Spacer(1, 10))
