@@ -70,7 +70,7 @@
        class="text-xs font-semibold text-brand hover:underline">Compare all →</a>
   </div>
 
-  <div class="grid gap-5 lg:grid-cols-3">
+  <div class="grid gap-5 lg:grid-cols-3 items-stretch">
     {% for pc in demo_postcodes %}
     {% set d = demo_data[pc] %}
     {% set score_color = "text-green-500" if d.civicScore >= 700 else "text-amber-500" if d.civicScore >= 400 else "text-red-400" %}
@@ -78,7 +78,7 @@
     {% set pct = (d.civicScore / 1000 * 188) | round | int %}
     {% set gap = 188 - pct %}
 
-    <div class="card-solid p-6 stat-card space-y-4">
+    <div class="card-solid p-6 stat-card space-y-4 flex flex-col justify-between">
       <!-- Header -->
       <div class="flex items-start justify-between">
         <div>
@@ -113,7 +113,7 @@
           </div>
           <div class="h-1.5 w-full rounded-full bg-slate-100">
             <div class="bar-fill h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500"
-                 style="width:{{ item.score }}%"></div>
+                 style="width:{{ (item.score / 200 * 100) | round | int }}%"></div>
           </div>
         </div>
         {% endfor %}
@@ -123,7 +123,7 @@
 
       <a href="/postcode?code={{ pc | urlencode }}"
          class="block text-center rounded-full bg-gradient-to-r from-blue-500 to-indigo-500
-                px-4 py-2.5 text-xs font-semibold text-white hover:opacity-90 transition">
+                px-4 py-2.5 text-xs font-semibold text-white hover:opacity-90 transition mt-auto">
         View Full Report →
       </a>
     </div>

@@ -53,7 +53,8 @@
         <circle cx="80" cy="80" r="64" fill="none" stroke="#f1f5f9" stroke-width="12"/>
         <circle cx="80" cy="80" r="64" fill="none" stroke="{{ ring_color }}" stroke-width="12"
                 stroke-linecap="round"
-                stroke-dasharray="{{ (pct * 1.42) | round | int }} {{ (gap * 1.42) | round | int }}"/>
+                stroke-dasharray="{{ (pct * 1.42) | round | int }} {{ (gap * 1.42) | round | int }}"
+                class="ring-fill"/>
       </svg>
       <div class="relative text-center">
         <p class="text-4xl font-bold {{ score_color }}">{{ data.civicScore }}</p>
@@ -118,11 +119,11 @@
               <span class="font-semibold text-slate-600">{{ category }}</span>
               <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] text-slate-400">{{ item.trend }}</span>
             </div>
-            <span class="font-bold text-slate-700">{{ item.score }}/100</span>
+            <span class="font-bold text-slate-700">{{ item.score }}/200</span>
           </div>
           <div class="h-2 w-full rounded-full bg-slate-100">
             <div class="bar-fill h-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500"
-                 style="width:{{ item.score }}%; animation-delay:{{ loop.index0 * 0.08 }}s"></div>
+                 style="width:{{ (item.score / 200 * 100) | round | int }}%; animation-delay:{{ loop.index0 * 0.08 }}s"></div>
           </div>
           <p class="mt-1 text-[10px] text-slate-400">{{ item.note }}</p>
         </div>

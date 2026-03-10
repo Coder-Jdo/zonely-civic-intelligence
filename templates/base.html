@@ -54,6 +54,11 @@
     @keyframes barFill { from { width: 0; } }
     .bar-fill { animation: barFill 0.9s cubic-bezier(.16,1,.3,1) both; }
 
+    @keyframes ringFill {
+      from { stroke-dasharray: 0 999; }
+    }
+    .ring-fill { animation: ringFill 1.2s cubic-bezier(.16,1,.3,1) both; }
+    
     /* Pro badge */
     .pro-badge {
       background: linear-gradient(135deg, #f59e0b, #ef4444);

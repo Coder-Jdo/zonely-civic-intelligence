@@ -57,7 +57,7 @@ INNER_W = W - 2 * MARGIN
 def bar_drawing(value: int, width: float = INNER_W - 60, height: float = 8) -> Drawing:
     d = Drawing(width, height)
     d.add(Rect(0, 0, width, height, rx=4, ry=4, fillColor=BRAND_LIGHT, strokeColor=None))
-    fill_w = max(4, width * value / 100)
+    fill_w = max(4, width * value / 200)
     d.add(Rect(0, 0, fill_w, height, rx=4, ry=4, fillColor=BRAND, strokeColor=None))
     return d
 
@@ -154,7 +154,7 @@ def generate_report_pdf(code: str, data: dict) -> bytes:
         row = [[
             Paragraph(cat, styles["bold"]),
             Paragraph(item["trend"], styles["small"]),
-            Paragraph(f"{item['score']}/100", styles["bold"]),
+            Paragraph(f"{item['score']}/200", styles["bold"]),
         ]]
         t = Table(row, colWidths=[INNER_W * 0.52, INNER_W * 0.28, INNER_W * 0.2])
         t.setStyle(TableStyle([

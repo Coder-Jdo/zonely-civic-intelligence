@@ -139,11 +139,11 @@
       <div>
         <div class="flex justify-between text-xs text-slate-500 mb-1">
           <span class="font-mono">{{ r.code }}</span>
-          <span class="font-semibold text-[#0F3D57]">{{ item.score }}/100</span>
+          <span class="font-semibold text-slate-500">{{ item.score }}/200</span>
         </div>
         <div class="h-2 w-full rounded-full bg-[#EAF6FF]">
           <div class="bar-fill h-2 rounded-full {{ 'bg-[#0F3D57]' if loop.first else 'bg-slate-400' }}"
-               style="width:{{ item.score }}%; animation-delay:{{ loop.index0 * 0.05 }}s"></div>
+               style="width:{{ (item.score / 200 * 100) | round | int }}%; animation-delay:{{ loop.index0 * 0.05 }}s"></div>
         </div>
         <p class="mt-0.5 text-[10px] text-slate-400">{{ item.note }}</p>
       </div>
