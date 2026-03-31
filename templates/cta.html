@@ -1,0 +1,11 @@
+<div style="background: linear-gradient(135deg, {{ bg_start|default('#2563A8') }}, {{ bg_end|default('#1E4A7A') }}); margin-top: 40px; margin-bottom: 40px; padding: 32px; border-radius: 16px; color: white; border: none; box-shadow: 0 4px 20px rgba(30, 74, 122, 0.15);">
+  <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 8px; font-family: 'Manrope', sans-serif; margin-top: 0; line-height: 1.3;">
+    &#128161; {{ headline|default('Want Your Area Analysed?') }}
+  </h2>
+  <p style="font-size: 14.5px; opacity: 0.95; line-height: 1.6; font-family: 'Inter', sans-serif; margin-bottom: 20px; margin-top: 0;">
+    {{ supporting_text|default('Get a tailored civic intelligence report for your postcode. Request access to our full postcode coverage.') }}
+  </p>
+  <a href="https://forms.gle/1TwmamGaTaU2A3eW8" target="_blank" style="display:inline-block; background: {{ btn_bg|default('#3B82C4') }}; color: white; padding: 12px 28px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 14px; font-family: 'Inter', sans-serif; transition: opacity 0.2s;">
+    {{ button_text|default('Request Access') }}
+  </a>
+</div>

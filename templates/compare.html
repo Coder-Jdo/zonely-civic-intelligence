@@ -261,6 +261,14 @@
   {% endfor %}
 </section>
 
+<!-- ── CTA ────────────────────────────────────────────────────────── -->
+<section class="fade-up fade-up-5 mt-8">
+  {% set headline = "Get a Custom Civic Intelligence Report" %}
+  {% set supporting_text = "Want Zonely coverage for a different area? Request a custom report or early access for your preferred postcode." %}
+  {% set button_text = "Request Custom Report" %}
+  {% include "cta.html" %}
+</section>
+
 {% elif results | length == 1 %}
 <div class="card p-8 text-center text-slate-500 text-sm">
   Please enter at least <strong>2 postcodes</strong> to compare.

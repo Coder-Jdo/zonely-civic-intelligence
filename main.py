@@ -1,5 +1,14 @@
+import sys
+import asyncio
+
+# Playwright needs an asyncio event loop that supports subprocesses on Windows.
+if sys.platform.startswith("win"):
+    _policy = getattr(asyncio, "WindowsProactorEventLoopPolicy", None)
+    if _policy is not None:
+        asyncio.set_event_loop_policy(_policy())
+
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from data import ZONELY_DEMO_DATA, normalize_postcode, is_valid_postcode
@@ -26,7 +35,7 @@ async def index(request: Request):
         {"label": "Liveability", "value": 70},
     ]
     demo_data = {pc: ZONELY_DEMO_DATA[pc] for pc in demo_postcodes}
-    return templates.TemplateResponse("index.html", {
+    return templates.TemplateResponse(request=request, name="index.html", context={
         "request": request,
         "demo_postcodes": demo_postcodes,
         "bureau_bars": bureau_bars,
@@ -38,12 +47,12 @@ async def index(request: Request):
 async def postcode_report(request: Request, code: str = ""):
     normalized = normalize_postcode(code)
     if not is_valid_postcode(normalized):
-        return templates.TemplateResponse("not_found.html", {
+        return templates.TemplateResponse(request=request, name="not_found.html", context={
             "request": request,
             "code": normalized,
         }, status_code=404)
     data = ZONELY_DEMO_DATA[normalized]
-    return templates.TemplateResponse("postcode.html", {
+    return templates.TemplateResponse(request=request, name="postcode.html", context={
         "request": request,
         "code": normalized,
         "data": data,
@@ -69,16 +78,19 @@ async def api_postcodes():
 
 
 @app.get("/download/{code}")
-async def download_report(code: str):
+async def download_report(request: Request, code: str):
     normalized = normalize_postcode(code)
     if not is_valid_postcode(normalized):
         raise HTTPException(status_code=404, detail=f"Postcode '{normalized}' not found.")
 
-    pdf_bytes = generate_report_pdf(normalized, ZONELY_DEMO_DATA[normalized])
+    # Construct the full URL to the report page for this postcode
+    target_url = str(request.url_for('postcode_report')) + f"?code={normalized}"
+
+    pdf_bytes = await generate_report_pdf(target_url)
     filename = f"Zonely-Report-{normalized.replace(' ', '_')}.pdf"
 
-    return StreamingResponse(
-        io.BytesIO(pdf_bytes),
+    return Response(
+        content=pdf_bytes,
         media_type="application/pdf",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'}
     )
@@ -93,7 +105,7 @@ async def compare(request: Request, codes: str = ""):
                 results.append({"code": normalized, "data": ZONELY_DEMO_DATA[normalized]})
             else:
                 errors.append(normalized)
-    return templates.TemplateResponse("compare.html", {
+    return templates.TemplateResponse(request=request, name="compare.html", context={
         "request": request,
         "results": results,
         "errors": errors,
@@ -101,14 +113,14 @@ async def compare(request: Request, codes: str = ""):
     })
 @app.get("/vision", response_class=HTMLResponse)
 async def vision(request: Request):
-    return templates.TemplateResponse("vision.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="vision.html", context={"request": request})
 @app.get("/documentation", response_class=HTMLResponse)
 async def documentation(request: Request):
-    return templates.TemplateResponse("documentation.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="documentation.html", context={"request": request})
 
 @app.get("/admin", response_class=HTMLResponse)
 async def admin_login(request: Request, error: str = ""):
-    return templates.TemplateResponse("admin.html", {"request": request, "error": error})
+    return templates.TemplateResponse(request=request, name="admin.html", context={"request": request, "error": error})
 
 @app.post("/admin", response_class=HTMLResponse)
 async def admin_login_post(request: Request):
@@ -118,7 +130,7 @@ async def admin_login_post(request: Request):
     password = form.get("password", "")
     if username == "admin" and password == "zonely2024":
         return RedirectResponse(url="/admin/dashboard", status_code=302)
-    return templates.TemplateResponse("admin.html", {"request": request, "error": "Invalid username or password."})
+    return templates.TemplateResponse(request=request, name="admin.html", context={"request": request, "error": "Invalid username or password."})
 
 @app.get("/admin/dashboard", response_class=HTMLResponse)
 async def admin_dashboard(request: Request):
@@ -128,7 +140,7 @@ async def admin_dashboard(request: Request):
         "avg_score": round(sum(d["civicScore"] for d in ZONELY_DEMO_DATA.values()) / len(ZONELY_DEMO_DATA)),
         "high_impact": sum(1 for d in ZONELY_DEMO_DATA.values() if d["impactLevel"] == "high"),
     }
-    return templates.TemplateResponse("admin_dashboard.html", {
+    return templates.TemplateResponse(request=request, name="admin_dashboard.html", context={
         "request": request,
         "stats": stats,
         "postcodes": ZONELY_DEMO_DATA,
