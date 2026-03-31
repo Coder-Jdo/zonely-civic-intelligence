@@ -86,7 +86,17 @@ async def download_report(request: Request, code: str):
     # Construct the full URL to the report page for this postcode
     target_url = str(request.url_for('postcode_report')) + f"?code={normalized}"
 
-    pdf_bytes = await generate_report_pdf(target_url)
+    try:
+        pdf_bytes = await generate_report_pdf(target_url)
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                "PDF generation failed. If this is your first run, install Playwright browsers with "
+                "`python -m playwright install chromium`. Error: "
+                + str(e)
+            ),
+        ) from e
     filename = f"Zonely-Report-{normalized.replace(' ', '_')}.pdf"
 
     return Response(
