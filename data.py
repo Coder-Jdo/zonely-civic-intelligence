@@ -62,138 +62,186 @@ class PostcodeData(TypedDict):
 ZONELY_DEMO_DATA: dict[str, PostcodeData] = {
     "LS1 1BA": {
         "area": "Leeds City Centre",
-        "civicScore": 919,
+        "civicScore": 780,
         "impactLabel": "High Impact",
         "impactLevel": "high",
-        "confidenceBand": 46,
-        "direction": "Stable",
-        "directionSymbol": "→",
-        "headlineSummary": "Significant development pipeline activity. Substantial new supply and neighbourhood change anticipated over 3–5 years.",
+        "confidenceBand": 48,
+        "direction": "Volatile",
+        "directionSymbol": "↗",
+        "headlineSummary": "High-income central area (£49.6K avg) with strong development potential but extremely high crime levels (~2240 per 1,000) create significant risk.",
+
         "signals": {
-            "activeApplications": 168,
-            "unitsPipeline": 4200,
-            "inConsultation": 34,
-            "approvalRate": 87,
-            "submittedPending": 22,
+            "activeApplications": 150,
+            "unitsPipeline": 4000,
+            "inConsultation": 30,
+            "approvalRate": 85,
+            "submittedPending": 20,
         },
+
         "breakdown": {
-            "Liveability & Amenities":         {"score": 188, "trend": "Stable",        "note": "Strong service density and amenity access."},
-            "Investment Potential":            {"score": 178, "trend": "Growing",        "note": "Moderate investment strength; improving attractiveness."},
-            "Infrastructure & Connectivity":   {"score": 191, "trend": "Well-connected", "note": "Excellent transport links."},
-            "Crime & Safety":                  {"score": 174, "trend": "Improving",      "note": "Safety improving with regeneration."},
-            "Planning & Development Momentum": {"score": 188, "trend": "Accelerating",   "note": "Very high pipeline activity."},
+            "Liveability & Amenities": {
+                "score": 160,
+                "trend": "Strong",
+                "note": "Very high education levels (49% degree holders)."
             },
-        "planningMomentum": {
-            "score": 88,
-            "direction": "Accelerating",
-            "approvalRangeLow": 75,
-            "approvalRangeHigh": 92,
+            "Investment Potential": {
+                "score": 180,
+                "trend": "High",
+                "note": "High household income (~£49.6K)."
+            },
+            "Infrastructure & Connectivity": {
+                "score": 190,
+                "trend": "Excellent",
+                "note": "City centre location with top connectivity."
+            },
+            "Crime & Safety": {
+                "score": 40,
+                "trend": "High Risk",
+                "note": "Extremely high crime (~2240 per 1,000 residents)."
+            },
+            "Planning & Development Momentum": {
+                "score": 170,
+                "trend": "Accelerating",
+                "note": "Major regeneration and development activity."
+            },
         },
+
+        "planningMomentum": {
+            "score": 85,
+            "direction": "Accelerating",
+            "approvalRangeLow": 70,
+            "approvalRangeHigh": 90,
+        },
+
         "timeToValue": {
             "phase": "Disruption Phase",
-            "phaseRange": "0–2 years",
-            "timeline": "0–2 Disruption | 3–5 Growth | 6–10 Compounding",
+            "phaseRange": "0–3 years",
+            "timeline": "0–3 Disruption | 3–6 Growth | 6–10 Compounding",
             "whatToExpect": [
-                "Construction activity and temporary amenity disruption.",
-                "Supply increase may create short-term rental softening.",
-                "Infrastructure improvements will begin to deliver benefits.",
+                "High development activity and urban transformation.",
+                "Strong rental demand from young professionals.",
             ],
             "drivers": [
-                "Large development pipeline (4,200 units).",
-                "High approval rate indicating strong planning support.",
+                "High income levels.",
+                "City centre demand."
             ],
             "riskFlags": [
-                "Short-term rental oversupply risk.",
-                "Construction noise and disruption.",
+                "Extremely high crime levels.",
+                "Urban volatility."
             ],
             "factors": {
-                "developmentScale": "Very large pipeline (4,200 units).",
-                "buildingHeights": "High-rise (avg 18 storeys).",
-                "approvalLikelihood": "Very high (87%).",
+                "developmentScale": "Very high",
+                "approvalLikelihood": "High (85%)",
             },
         },
+
         "creditHistory": {
-            "volatilityIndex": 68,
-            "recoverySpeed": 145,
-            "tenYearTrend": 185,
-            "events": [
-                {"year": 2016, "title": "South Bank Masterplan Launch",    "tag": "Planning",       "note": "Largest regeneration project in the UK."},
-                {"year": 2018, "title": "Transport Investment Confirmed",  "tag": "Infrastructure", "note": "Transport investment completed."},
-                {"year": 2019, "title": "Masterplan Approval",             "tag": "Planning",       "note": "Major regeneration plan adopted."},
-                {"year": 2020, "title": "COVID-19 Pause",                  "tag": "Crisis",         "note": "Market disruption and construction delays."},
-                {"year": 2022, "title": "First Major Completion",          "tag": "Market",         "note": "First phase of large scheme completed."},
-            ],
+            "volatilityIndex": 75,
+            "recoverySpeed": 140,
+            "tenYearTrend": 170,
+            "events": []
         },
+
         "reportUrl": "/reports/Zonely-Client-Report-LS1_1BA.pdf",
     },
+
+
     "LS3 1AA": {
         "area": "Leeds",
-        "civicScore": 450,
+        "civicScore": 520,
         "impactLabel": "Moderate Impact",
         "impactLevel": "moderate",
-        "confidenceBand": 28,
+        "confidenceBand": 35,
         "direction": "Stable",
         "directionSymbol": "→",
-        "headlineSummary": "Balanced development activity. Growth is present but measured with moderate supply pressure.",
+        "headlineSummary": "Young, highly educated area with strong health (91%) and high student population, but lower income (~£30K) and elevated crime (~368 per 1,000).",
+
         "signals": {
-            "activeApplications": 41,
-            "unitsPipeline": 1125,
+            "activeApplications": 40,
+            "unitsPipeline": 1100,
             "inConsultation": 8,
             "approvalRate": 81,
             "submittedPending": 10,
         },
+
         "breakdown": {
-            "Liveability & Amenities":         {"score": 92, "trend": "Stable", "note": "Adequate amenity access."},
-            "Investment Potential":            {"score": 88, "trend": "Stable", "note": "Solid investment signal."},
-            "Infrastructure & Connectivity":   {"score": 90, "trend": "Stable", "note": "Average connectivity."},
-            "Crime & Safety":                  {"score": 88, "trend": "Stable", "note": "Moderate safety profile."},
-            "Planning & Development Momentum": {"score": 92, "trend": "Stable", "note": "Steady pipeline."},
-                    },
+            "Liveability & Amenities": {
+                "score": 100,
+                "trend": "Good",
+                "note": "High health levels (91%) and strong education (47% degree holders)."
+            },
+            "Investment Potential": {
+                "score": 85,
+                "trend": "Moderate",
+                "note": "Lower income (~£30K) limits premium upside."
+            },
+            "Infrastructure & Connectivity": {
+                "score": 90,
+                "trend": "Stable",
+                "note": "Good connectivity near city centre."
+            },
+            "Crime & Safety": {
+                "score": 65,
+                "trend": "Risk",
+                "note": "Crime ~368 per 1,000 (above average)."
+            },
+            "Planning & Development Momentum": {
+                "score": 95,
+                "trend": "Stable",
+                "note": "Steady development pipeline."
+            },
+        },
+
         "planningMomentum": {
-            "score": 52,
+            "score": 55,
             "direction": "Neutral",
             "approvalRangeLow": 65,
-            "approvalRangeHigh": 88,
+            "approvalRangeHigh": 85,
         },
+
         "timeToValue": {
             "phase": "Growth Phase",
             "phaseRange": "3–5 years",
             "timeline": "0–2 Disruption | 3–5 Growth | 6–10 Compounding",
             "whatToExpect": [
-                "More visible delivery outcomes.",
-                "Rental demand can absorb new supply if timing is staggered.",
+                "Steady rental demand due to student population.",
+                "Moderate growth over mid-term.",
             ],
-            "drivers": ["Pipeline delivery cadence.", "Local job and transport accessibility."],
+            "drivers": [
+                "Young demographic.",
+                "Education hub."
+            ],
             "riskFlags": [
-                "Oversupply risk if delivery clusters.",
-                "Policy changes impacting approvals.",
+                "Higher crime rate.",
+                "Lower income levels."
             ],
             "factors": {
-                "developmentScale": "Moderate pipeline (1,125 units).",
-                "buildingHeights": "Mid-rise (avg 9 storeys).",
-                "approvalLikelihood": "Moderate-high (81%).",
+                "developmentScale": "Moderate",
+                "approvalLikelihood": "81%",
             },
         },
+
         "creditHistory": {
-            "volatilityIndex": 42,
+            "volatilityIndex": 45,
             "recoverySpeed": 120,
             "tenYearTrend": 110,
-            "events": [
-                {"year": 2018, "title": "Public Realm Upgrade",     "tag": "Infrastructure", "note": "Local streetscape improvements."},
-                {"year": 2021, "title": "Delivery Acceleration",    "tag": "Planning",       "note": "Increased approvals and starts."},
-            ],
+            "events": []
         },
+
         "reportUrl": "/reports/Zonely-Client-Report-LS3_1AA.pdf",
     },
+
+
     "LS6 3BN": {
         "area": "Chapel Allerton",
-        "civicScore": 218,
+        "civicScore": 400,
         "impactLabel": "Low Impact",
         "impactLevel": "low",
-        "confidenceBand": 11,
+        "confidenceBand": 25,
         "direction": "Stable",
         "directionSymbol": "→",
-        "headlineSummary": "Limited near-term pipeline relative to city centre areas. Expect steadier conditions with lower supply shock risk.",
+        "headlineSummary": "Balanced suburban area with stable income (~£42K), lower crime (~112 per 1,000), and long-term steady growth potential.",
+
         "signals": {
             "activeApplications": 45,
             "unitsPipeline": 300,
@@ -201,46 +249,75 @@ ZONELY_DEMO_DATA: dict[str, PostcodeData] = {
             "approvalRate": 84,
             "submittedPending": 6,
         },
+
         "breakdown": {
-            "Liveability & Amenities":         {"score": 42, "trend": "Stable",   "note": "Local amenities exist but lower density."},
-            "Investment Potential":            {"score": 44, "trend": "Growing",  "note": "Stable investment base."},
-            "Infrastructure & Connectivity":   {"score": 40, "trend": "Moderate", "note": "Moderate connectivity."},
-            "Crime & Safety":                  {"score": 48, "trend": "Improving","note": "Favourable safety trend."},
-            "Planning & Development Momentum": {"score": 44, "trend": "Stable",   "note": "Lower development intensity."},
-        },
-        "planningMomentum": {
-            "score": 38,
-            "direction": "Slowing",
-            "approvalRangeLow": 60,
-            "approvalRangeHigh": 82,
-        },
-        "timeToValue": {
-            "phase": "Compounding Phase",
-            "phaseRange": "6–10 years",
-            "timeline": "0–2 Disruption | 3–5 Growth | 6–10 Compounding",
-            "whatToExpect": [
-                "Lower disruption and gradual uplift.",
-                "Stable rental conditions.",
-            ],
-            "drivers": ["Incremental improvements.", "Amenity and safety stability."],
-            "riskFlags": ["Lower upside if pipeline remains limited."],
-            "factors": {
-                "developmentScale": "Small pipeline (~300 units).",
-                "buildingHeights": "Low-rise (avg 5 storeys).",
-                "approvalLikelihood": "High (84%).",
+            "Liveability & Amenities": {
+                "score": 80,
+                "trend": "Stable",
+                "note": "Good health (~88%) and suburban lifestyle."
+            },
+            "Investment Potential": {
+                "score": 90,
+                "trend": "Stable",
+                "note": "Income (~£42K) supports steady growth."
+            },
+            "Infrastructure & Connectivity": {
+                "score": 75,
+                "trend": "Moderate",
+                "note": "Decent but not central connectivity."
+            },
+            "Crime & Safety": {
+                "score": 110,
+                "trend": "Safe",
+                "note": "Relatively low crime (~112 per 1,000)."
+            },
+            "Planning & Development Momentum": {
+                "score": 70,
+                "trend": "Slow",
+                "note": "Limited development activity."
             },
         },
-        "creditHistory": {
-            "volatilityIndex": 25,
-            "recoverySpeed": 80,
-            "tenYearTrend": 60,
-            "events": [
-                {"year": 2016, "title": "Local Centre Investment", "tag": "Market", "note": "Retail and community improvements."},
-            ],
+
+        "planningMomentum": {
+            "score": 40,
+            "direction": "Slowing",
+            "approvalRangeLow": 60,
+            "approvalRangeHigh": 80,
         },
+
+        "timeToValue": {
+            "phase": "Compounding Phase",
+            "phaseRange": "5–10 years",
+            "timeline": "0–2 Stable | 3–5 Growth | 6–10 Compounding",
+            "whatToExpect": [
+                "Stable residential demand.",
+                "Slow but steady appreciation.",
+            ],
+            "drivers": [
+                "Suburban stability.",
+                "Lower crime levels."
+            ],
+            "riskFlags": [
+                "Lower development upside.",
+            ],
+            "factors": {
+                "developmentScale": "Low",
+                "approvalLikelihood": "84%",
+            },
+        },
+
+        "creditHistory": {
+            "volatilityIndex": 30,
+            "recoverySpeed": 110,
+            "tenYearTrend": 90,
+            "events": []
+        },
+
         "reportUrl": "/reports/Zonely-Client-Report-LS6_3BN.pdf",
-    },
+    }
+
 }
+
 
 
 def normalize_postcode(value: str) -> str:
