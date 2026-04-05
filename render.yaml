@@ -2,7 +2,7 @@ services:
   - type: web
     name: zonely-civic-intelligence
     runtime: python
-    buildCommand: "pip install -r requirements.txt && python -m playwright install chromium --with-deps"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     envVars:
       - key: PYTHON_VERSION
