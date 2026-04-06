@@ -1,6 +1,6 @@
 """
 Zonely Demo Data — sourced from actual Civic Intelligence Reports
-Postcodes: LS1 1BA (Lisbon Street), LS3 1AA (Hanover Square), LS6 3BN (Chapel Lane)
+Postcodes: LS1 1BA (West One, wellington street, Leeds), LS3 1AA (Leeds City College, Park Lane Campus, Park Lane, Leeds), LS6 3BN (Cumberland Court, Leeds)
 """
 
 import re
@@ -21,10 +21,10 @@ ZONELY_DEMO_DATA = {
     # LS1 1BA — Lisbon Street, Leeds City Centre
     # ─────────────────────────────────────────────────────────────────────────
     "LS1 1BA": {
-        "street":       "Lisbon Street",
+        "street":       "West One, Wellington Street",
         "area":         "Leeds City Centre",
-        "ward":         "Little London & Woodhouse Ward",
-        "constituency": "Leeds Central",
+        "ward":         "Little London & Woodhouse",
+        "constituency": "Leeds Central and Headingley",
         "civicScore":   560,
         "impactLevel":  "high",
         "impactLabel":  "High Impact",
@@ -153,10 +153,10 @@ ZONELY_DEMO_DATA = {
     # LS3 1AA — Hanover Square, Leeds City Centre
     # ─────────────────────────────────────────────────────────────────────────
     "LS3 1AA": {
-        "street":       "Hanover Square",
-        "area":         "Leeds City Centre",
+        "street":       "Leeds City College, Burley Road",
+        "area":         "Little London & Woodhouse",
         "ward":         "Little London & Woodhouse Ward",
-        "constituency": "Leeds Central",
+        "constituency": "Leeds Central and Headingley",
         "civicScore":   624,
         "impactLevel":  "high",
         "impactLabel":  "High Impact",
@@ -280,7 +280,7 @@ ZONELY_DEMO_DATA = {
         ],
 
         # ── Report Meta ───────────────────────────────────────────────────────
-        "reportDate":   "March 2025",
+        "reportDate":   "April 2026",
         "dataSources":  "ONS - Office for National Statistics · HM Land Registry · Ofsted · UK Police",
     },
 
@@ -289,10 +289,10 @@ ZONELY_DEMO_DATA = {
     # LS6 3BN — Chapel Lane, Headingley, Leeds
     # ─────────────────────────────────────────────────────────────────────────
     "LS6 3BN": {
-        "street":       "Chapel Lane",
-        "area":         "Headingley, Leeds",
-        "ward":         "Headingley & Hyde Park Ward",
-        "constituency": "Leeds North West",
+        "street":       "Cumberland Court",
+        "area":         "Headingley",
+        "ward":         "Headingley and Hyde park ",
+        "constituency": "Leeds Central and Headingley",
         "civicScore":   637,
         "impactLevel":  "medium",
         "impactLabel":  "Medium Impact",
@@ -416,7 +416,7 @@ ZONELY_DEMO_DATA = {
         ],
 
         # ── Report Meta ───────────────────────────────────────────────────────
-        "reportDate":   "March 2025",
+        "reportDate":   "April 2026",
         "dataSources":  "ONS - Office for National Statistics · HM Land Registry · Ofsted · UK Police",
     },
 }
