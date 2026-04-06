@@ -1,6 +1,3 @@
-"""
-Zonely PDF Report Generator
-"""
 import asyncio
 import os
 import sys
@@ -9,12 +6,8 @@ async def generate_report_pdf(url: str) -> bytes:
     def _render() -> bytes:
         from playwright.sync_api import sync_playwright
 
-        # Only set custom path on Render (Linux), not Windows
         if sys.platform != "win32":
-            os.environ.setdefault(
-                "PLAYWRIGHT_BROWSERS_PATH",
-                "/opt/render/project/src/.playwright-browsers"
-            )
+            os.environ["PLAYWRIGHT_BROWSERS_PATH"] = "/opt/render/project/src"
 
         with sync_playwright() as p:
             browser = p.chromium.launch(
