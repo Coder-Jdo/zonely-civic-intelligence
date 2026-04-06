@@ -1,16 +1,25 @@
 """
 Zonely PDF Report Generator
-Uses Playwright to produce a high-fidelity PDF directly from the HTML report.
 """
-
 import asyncio
+import os
+import sys
 
 async def generate_report_pdf(url: str) -> bytes:
     def _render() -> bytes:
         from playwright.sync_api import sync_playwright
 
+        # Only set custom path on Render (Linux), not Windows
+        if sys.platform != "win32":
+            os.environ.setdefault(
+                "PLAYWRIGHT_BROWSERS_PATH",
+                "/opt/render/project/src/.playwright-browsers"
+            )
+
         with sync_playwright() as p:
-            browser = p.chromium.launch(args=["--no-sandbox", "--disable-setuid-sandbox"])
+            browser = p.chromium.launch(
+                args=["--no-sandbox", "--disable-setuid-sandbox"]
+            )
             context = browser.new_context(
                 viewport={"width": 1200, "height": 800},
                 device_scale_factor=2,
