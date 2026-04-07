@@ -55,8 +55,8 @@ ZONELY_DEMO_DATA = {
 
         # ── Property & Investment ─────────────────────────────────────────────
         "property": {
-            "avgPrice":             "£9,649K",
-            "streetAvg":            "£9,649K",
+            "avgPrice":             "£9.6M",
+            "streetAvg":            "£9.6M",
             "leedsCity":            "£294K",
             "nationalMedian":       "£322K",
             "incomeRank":           "7/10",
@@ -65,7 +65,7 @@ ZONELY_DEMO_DATA = {
                 {"address": "Castle House, 31 Lisbon St (Other)", "price": "£14,500,000", "date": "Jun 2018", "est2025": "£18,186,740"},
             ],
             "roiSnapshot": {
-                "avgBuyPrice":      "£9,649K",
+                "avgBuyPrice":      "£9.6M",
                 "grossYield":       "N/A",
                 "netYield":         "N/A",
                 "estRentalIncome":  "N/A",
